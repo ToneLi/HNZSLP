@@ -7,12 +7,18 @@ LatticeTransformer (word, bytes,..) for Zero shot learning
 
 On the top, ZSL-(KGE model) is the baseline is proposed in ZSGAN, such as ZSL-Tucker. (ZSGAN, OntoZSL) are two models from 2020, 2021. LENR is the model we proposed.
 
+**Baseline group 1:ZSGAN, OntoZSL **
+
+**Baseline group 2:About relation surfacename**
 
 (--------NELL-ZS-----------Wiki-ZS---------)
 | KGE  | Model     | MRR     | hits@10     |hits@5     |hits@1|MRR     |hits@10     |hits@5     |hits@1|
 |---------- | ---------- | :-----------:  | :-----------: |:-----------: |:-----------: | :-----------: |:-----------: |:-----------: |:-----------: |
-|TransE|  relation-surface BERT  |    |   |   | |-    |-  |-  |-
-|Distmult|   relation-surface BERT  |  -  | - | - | -|  |  | |
-|complex|   relation-surface BERT  |  -  | - | - | -|  |  | |
-|Tucker  |    relation-surface BERT   | -    |-    |-  |-    |-  |-  |
+|TransE(relation-surface)|  BERT  |    |   |   | |-    |-  |-  |-
+||  Byt5(2021)  |    |   |   | |-    |-  |-  |-
+||  CharFormer(2021)  |    |   |   | |-    |-  |-  |-
 
+
+
+[Byt5(2021)](https://github.com/google-research/byt5)
+[CharFormer(2021)](https://github.com/google-research/google-research/tree/master/charformer)
