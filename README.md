@@ -17,11 +17,9 @@ On the top, ZSL-(KGE model) is the baseline is proposed in ZSGAN, such as ZSL-Tu
 |TransE(relation-surface)|  BERT  |    |   |   | |-    |-  |-  |-
 ||  Byt5(2021)  |    |   |   | |-    |-  |-  |-
 ||  CharFormer(2021)  |    |   |   | |-    |-  |-  |-
-
 |DistMult(relation-surface)|  BERT  |    |   |   | |-    |-  |-  |-
 ||  Byt5(2021)  |    |   |   | |-    |-  |-  |-
 ||  CharFormer(2021)  |    |   |   | |-    |-  |-  |-
-
 |ComplEx(relation-surface)|  BERT  |    |   |   | |-    |-  |-  |-
 ||  Byt5(2021)  |    |   |   | |-    |-  |-  |-
 ||  CharFormer(2021)  |    |   |   | |-    |-  |-  |-
