@@ -14,7 +14,7 @@ On the top, ZSL-(KGE model) is the baseline is proposed in ZSGAN, such as ZSL-Tu
 (--------NELL-ZS-----------Wiki-ZS---------)
 | KGE  | Model     | MRR     | hits@10     |hits@5     |hits@1|MRR     |hits@10     |hits@5     |hits@1|
 |---------- | ---------- | :-----------:  | :-----------: |:-----------: |:-----------: | :-----------: |:-----------: |:-----------: |:-----------: |
-|TransE(relation-surface)|  BERT  |    |   |   | |-    |-  |-  |-
+|TransE(relation-surface)|  BERT  |  0.269  |  0.402 | 0.343  |0.196 |-    |-  |-  |-
 ||  Byt5(2021)  |    |   |   | |-    |-  |-  |-
 ||  CharFormer(2021)  |    |   |   | |-    |-  |-  |-
 |DistMult(relation-surface)|  BERT  |    |   |   | |-    |-  |-  |-
@@ -27,3 +27,4 @@ On the top, ZSL-(KGE model) is the baseline is proposed in ZSGAN, such as ZSL-Tu
 [Byt5(2021)](https://github.com/google-research/byt5)
 
 [CharFormer(2021)](https://github.com/google-research/google-research/tree/master/charformer)
+
