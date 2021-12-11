@@ -1,4 +1,4 @@
-# LatticeTransformer-for-Zero-shot-learning
+# LatticeTransformer-for-Zero-shot-learning  (This is a formidable discover--by chen)
 LatticeTransformer (word, bytes,..) for Zero shot learning
 
 ## (Task 1) Link prediction in Zero Shot Learning 
