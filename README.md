@@ -27,6 +27,7 @@ On the top, ZSL-(KGE model) is the baseline is proposed in ZSGAN, such as ZSL-Tu
 ||  CharFormer(2021)  |    |   |   | |-    |-  |-  |-
 
 [Byt5(2021)](https://github.com/google-research/byt5)
+[Byt5(hugging face)](https://huggingface.co/docs/transformers/model_doc/byt5)
 
 [CharFormer(2021)](https://github.com/google-research/google-research/tree/master/charformer)
 
