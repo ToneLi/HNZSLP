@@ -32,7 +32,7 @@ On the top, ZSL-(KGE model) is the baseline is proposed in ZSGAN, such as ZSL-Tu
 [CharFormer(2021)](https://github.com/google-research/google-research/tree/master/charformer),
 (CharFromer (implenment)) (https://github.com/lucidrains/charformer-pytorch)
 
-#### byt5 main code
+#### Byt5 main code
 ```
 
 #transformers version:4.7.0
