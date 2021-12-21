@@ -32,3 +32,31 @@ On the top, ZSL-(KGE model) is the baseline is proposed in ZSGAN, such as ZSL-Tu
 [CharFormer(2021)](https://github.com/google-research/google-research/tree/master/charformer),
 (CharFromer (implenment)) (https://github.com/lucidrains/charformer-pytorch)
 
+#### byt5 main code
+```
+
+#transformers version:4.7.0
+from transformers import T5ForConditionalGeneration, AutoTokenizer
+byte_model = T5ForConditionalGeneration.from_pretrained('google/byt5-small')
+tokenizer = AutoTokenizer.from_pretrained('google/byt5-small')
+
+enc = tokenizer(["Life is like a box of chocolates.", "Today is Monday.","Today is Monday."], padding="longest", return_tensors="pt")
+
+M = byte_model(input_ids=enc["input_ids"].cuda(),
+                attention_mask=enc["attention_mask"].cuda(),
+                decoder_input_ids=enc["input_ids"].cuda())  # .encoder_last_hidden_state # forward pass
+
+relation_text_embedding=M.logits
+r = relation_text_embedding.sum(1)
+
+"""
+print(transformers.__version__)
+print(tf.__version__)
+
+4.7.0
+1.6.0
+"""
+
+```
+
+
