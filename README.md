@@ -32,7 +32,7 @@ On the top, ZSL-(KGE model) is the baseline is proposed in ZSGAN, such as ZSL-Tu
 [CharFormer(2021)](https://github.com/google-research/google-research/tree/master/charformer),
 (CharFromer (implenment)) (https://github.com/lucidrains/charformer-pytorch)
 
-#### Byt5 main code
+#### Byt5 core code
 ```
 
 #transformers version:4.7.0
@@ -50,13 +50,34 @@ relation_text_embedding=M.logits
 r = relation_text_embedding.sum(1)
 
 """
-print(transformers.__version__)
-print(tf.__version__)
+transformers---version 4.7.0
+tf---version 1.6.0
+torch version: 1.5.1
 
-4.7.0
-1.6.0
+
 """
 
 ```
+#### Chartransformer  core code
 
-
+```
+    self.tokenizer = GBST(
+            num_tokens=26, # I just use 26 letter (a,b,.....)
+           
+            dim=200,  # dimension of token and intra-block positional embedding
+            max_block_size=4,  # maximum block size
+            downsample_factor=1,  # the final downsample factor by which the sequence length will decrease by
+            score_consensus_attn=True
+            # whether to do the cheap score consensus (aka attention) as in eq. 5 in the paper
+        )
+        
+        # r_idx: [[1,2,3,4,5],[4,5,6,7,8],[7,8,9,06,7],....]  len(r_idx)==batch size, such as 64
+        ids_r = torch.tensor(r_idx[j]).unsqueeze(0).cuda()
+        relations_feather= self.tokenizer(ids_r)[0]
+        relations_feather = self.postion_embedding(relations_feather)
+        relations_feather = self.encoder(relations_feather)
+        relations_feather = self.mean_pooling(relations_feather)
+        
+torch: pip install torch==1.7.1+cu101 torchvision==0.8.2+cu101 torchaudio==0.7.2 -f https://download.pytorch.org/whl/torch_stable.html
+charformer-pytorch--charformer-pytorch-0.0.4
+```
