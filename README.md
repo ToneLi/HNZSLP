@@ -80,4 +80,5 @@ torch version: 1.5.1
         
 torch: pip install torch==1.7.1+cu101 torchvision==0.8.2+cu101 torchaudio==0.7.2 -f https://download.pytorch.org/whl/torch_stable.html
 charformer-pytorch--charformer-pytorch-0.0.4
+python 3.6
 ```
