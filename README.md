@@ -15,7 +15,7 @@ On the top, ZSL-(KGE model) is the baseline is proposed in ZSGAN, such as ZSL-Tu
 | KGE  | Model     | MRR     | hits@10     |hits@5     |hits@1|MRR     |hits@10     |hits@5     |hits@1|
 |---------- | ---------- | :-----------:  | :-----------: |:-----------: |:-----------: | :-----------: |:-----------: |:-----------: |:-----------: |
 |TransE(relation-surface)|  BERT  |  0.269  |  0.402 | 0.343  |0.196 |-    |-  |-  |-
-||  Byt5(2021)  |    |   |   | |-    |-  |-  |-
+||  Byt5(2021)  |   0.103 |0.173   |0.129   |0.064 |-    |-  |-  |-
 ||  transformer (word input)  |    |   |   | |-    |-  |-  |-
 ||  transformer (char input)  | 0.285   |  0.411 |  0.349 |0.217 |-    |-  |-  |-
 ||  CharFormer(2021)  |    |   |   | |-    |-  |-  |-
