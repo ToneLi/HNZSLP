@@ -82,3 +82,47 @@ torch: pip install torch==1.7.1+cu101 torchvision==0.8.2+cu101 torchaudio==0.7.2
 charformer-pytorch--charformer-pytorch-0.0.4
 python 3.6
 ```
+
+#### Get wiki surfacename
+
+go to the web [wiki query](https://query.wikidata.org/)
+input:
+```
+SELECT ?property ?propertyLabel ?propertyDescription (GROUP_CONCAT(DISTINCT(?altLabel); separator = ", ") AS ?altLabel_list) WHERE {
+    ?property a wikibase:Property .
+    OPTIONAL { ?property skos:altLabel ?altLabel . FILTER (lang(?altLabel) = "en") }
+    SERVICE wikibase:label { bd:serviceParam wikibase:language "en" .}
+ }
+GROUP BY ?property ?propertyLabel ?propertyDescription
+LIMIT 5000
+```
+
+and then you will got a file query.json, use the following code to get the relation and its surfacename 
+
+```
+import json
+with open("query.json",'r',encoding="utf-8") as load_f:
+     load_dict = json.load(load_f)
+# DIC=load_dict
+ids=[]
+surface_name=[]
+for r in load_dict:
+    ids.append(r["property"].replace("http://www.wikidata.org/entity/",""))
+    surface_name.append(r["propertyLabel"])
+DIC=dict(zip(ids,surface_name))
+# print(DIC)
+fw=open("relation_surface_name_id.txt","w",encoding="utf-8")
+i=0
+with open("relation_to_description.txt","r",encoding="utf-8") as fr:
+    for line in fr.readlines():
+        r=line.strip().split("\t")[0]
+        if r in DIC:
+            fw.write(r+"\t"+DIC[r]+"\n")
+        else:
+            i=i+1
+            print(r)
+print(i)
+
+```
+
+
