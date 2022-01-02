@@ -125,4 +125,61 @@ print(i)
 
 ```
 
+#### sentence representation by word2vec and tf-idf
+
+
+```
+import numpy as np
+from sklearn import feature_extraction
+from gensim.models import KeyedVectors
+from sklearn.feature_extraction.text import TfidfTransformer
+from sklearn.feature_extraction.text import  CountVectorizer
+model = KeyedVectors.load_word2vec_format('GoogleNews-vectors-negative300.bin', binary=True)
+
+i=0
+corpus=[]
+with open("WSP_Q_set.txt","r") as fr:
+    for line in fr.readlines():
+        i=i+1
+
+        text_=line.strip().replace("[","").replace("]","")
+        corpus.append(text_)
+        # sentence_embeddings = model.encode([text_])
+        # R.append(sentence_embeddings[0])
+
+    #
+    # R=np.array(R)
+    # np.save("metaqa_hop1_vector.npy",R)
+# corpus=["good boy yes","girl project"]
+vectorizer=CountVectorizer()
+transformer=TfidfTransformer()
+tfidf=transformer.fit_transform(vectorizer.fit_transform(corpus))
+word=vectorizer.get_feature_names()
+R=[]
+weight=tfidf.toarray()
+
+for i in range(len(weight)):
+    print(i)
+    vector_al=[]
+    for j in range(len(word)):
+        # print(word[j], weight[i][j])
+
+        w=word[j]
+        w_w=weight[i][j]
+        if w_w !=0 and w in model:
+            vector=model[w]
+            vector_al.append(vector)
+
+
+    V=np.sum(np.array(vector_al),axis=0)
+    R.append(V)
+    # print(V)
+    # print("----------")
+
+
+np.save("WSP_vector.npy",R)
+
+
+```
+
 
