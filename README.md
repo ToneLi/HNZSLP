@@ -236,4 +236,13 @@ for i in range(len(weight)):
 np.save("WSP_vector.npy",R)
 ```
 
-
+### 8) Citation
+Please cite this paper if you find the paper or code is useful.
+```bibtex
+@article{li2022hierarchical,
+  title={A Hierarchical N-Gram Framework for Zero-Shot Link Prediction},
+  author={Li, Mingchen and Chen, Junfan and Mensah, Samuel and Aletras, Nikolaos and Yang, Xiulong and Ye, Yang},
+  journal={arXiv preprint arXiv:2204.10293},
+  year={2022}
+}
+```
