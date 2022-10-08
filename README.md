@@ -31,8 +31,63 @@ Linux: CentOS Linux release
  Please use the default parameters.
 ```
 
+### 4) Scaled-Dot-Product-Attention in Our gramtransfomer
 
-### 4) Core code for the baseline model (Byt5)
+```
+
+
+class Scaled_Dot_Product_Attention(nn.Module):
+    '''Scaled Dot-Product Attention '''
+
+    def __init__(self):
+        super(Scaled_Dot_Product_Attention, self).__init__()
+
+    def forward(self, Q, K, V,adj_mask_matrix,com_mask_matrix,lattice_rel,scale=None):
+
+        '''
+        Args:
+            Q: [batch_size, len_Q, dim_Q]
+            K: [batch_size, len_K, dim_K]
+            V: [batch_size, len_V, dim_V]
+            scale:
+        Return:
+            self-attention      '''
+        len_Q=Q.size(1)
+
+
+        adj_relation=torch.tensor(lattice_rel[0])
+        adj_relation=Variable(adj_relation.repeat(1,len_Q,1)).cuda()
+        Adj_Q=adj_relation+Q
+        Adj_K=adj_relation+K
+
+        com_relation = torch.tensor(lattice_rel[1])
+        com_relation = Variable(com_relation.repeat(1, len_Q, 1)).cuda()
+        com_Q = com_relation + Q
+        com_K = com_relation + K
+
+        attention_adj = torch.matmul(Adj_Q, Adj_K.permute(0, 2, 1))# (1,6,6)
+        attention_com = torch.matmul(com_Q, com_K.permute(0, 2, 1))  # (1,6,6)
+
+        if scale:
+            attention_adj = attention_adj * scale
+            attention_com=attention_com*scale
+        # if mask:  # TODO change this
+
+
+        mask_attention1 = torch.mul(F.softmax(attention_adj, dim=-1), adj_mask_matrix)
+
+        mask_attention2 = torch.mul(F.softmax(attention_com, dim=-1), com_mask_matrix)
+
+        mask_attention=mask_attention1+mask_attention2
+        # print("vvvv",mask_attention.size())
+
+        context = torch.matmul(mask_attention, V)
+
+        return context
+```
+
+
+### 5) Core code for the baseline model (Byt5)
 #### Byt5 core code
 
 [Byt5(2021)](https://github.com/google-research/byt5),
@@ -84,7 +139,7 @@ charformer-pytorch--charformer-pytorch-0.0.4
 python 3.6
 ```
 
-### 5) How to get the  surfacename of wiki relation 
+### 6) How to get the  surfacename of wiki relation 
 
 #### Go to the web [wiki query](https://query.wikidata.org/)
 input:
@@ -126,7 +181,7 @@ print(i)
 
 ```
 
-### 6) Sentence Representation by Word2vec and TF-IDF
+### 7) Sentence Representation by Word2vec and TF-IDF
 
 
 ```
