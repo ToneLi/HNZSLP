@@ -23,7 +23,7 @@ torch: 1.5.1
 
 Linux: CentOS Linux release
 
-### 3)Run Code
+### 3) Run Code
 
 ```markdown
  For excample: please enter: LZSL\LZSP_nell_Distmult_13_90
@@ -32,7 +32,7 @@ Linux: CentOS Linux release
 ```
 
 
-### 4)Core code for the baseline model (Byyt5)
+### 4) Core code for the baseline model (Byt5)
 #### Byt5 core code
 
 [Byt5(2021)](https://github.com/google-research/byt5),
