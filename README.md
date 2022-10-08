@@ -15,6 +15,19 @@ The architecture of our proposed HNZSLP is depicted in the diagram below.   It c
 **Part 3**:  KG Embedding Learning Module combines the embeddings of the head entity and relation to predict the tail entity and update the embeddings.
 
 
+### 2) Configuration
+
+Python 3.6.6
+torch: 1.5.1
+Linux: CentOS Linux release
+
+## Run Code
+
+```markdown
+ For excample: please enter: LZSL\LZSP_nell_Distmult_13_90
+ You just run "CUDA_VISIBLE_DEVICES=1 python main.py" in your terminal.
+ Please use the default parameters.
+```
 
 
 [Byt5(2021)](https://github.com/google-research/byt5),
