@@ -18,10 +18,12 @@ The architecture of our proposed HNZSLP is depicted in the diagram below.   It c
 ### 2) Configuration
 
 Python 3.6.6
+
 torch: 1.5.1
+
 Linux: CentOS Linux release
 
-## Run Code
+### 3)Run Code
 
 ```markdown
  For excample: please enter: LZSL\LZSP_nell_Distmult_13_90
@@ -30,15 +32,12 @@ Linux: CentOS Linux release
 ```
 
 
+### 4)Core code for the baseline model (Byyt5)
+#### Byt5 core code
+
 [Byt5(2021)](https://github.com/google-research/byt5),
 [Byt5(hugging face)](https://huggingface.co/docs/transformers/model_doc/byt5)
-
-[CharFormer(2021)](https://github.com/google-research/google-research/tree/master/charformer),
-(CharFromer (implenment)) (https://github.com/lucidrains/charformer-pytorch)
-
-#### Byt5 core code
 ```
-
 #transformers version:4.7.0
 from transformers import T5ForConditionalGeneration, AutoTokenizer
 byte_model = T5ForConditionalGeneration.from_pretrained('google/byt5-small')
@@ -57,13 +56,11 @@ r = relation_text_embedding.sum(1)
 transformers---version 4.7.0
 tf---version 1.6.0
 torch version: 1.5.1
-
-
 """
-
 ```
 #### Chartransformer  core code
-
+[CharFormer(2021)](https://github.com/google-research/google-research/tree/master/charformer),
+(CharFromer (implenment)) (https://github.com/lucidrains/charformer-pytorch)
 ```
     self.tokenizer = GBST(
             num_tokens=26, # I just use 26 letter (a,b,.....)
@@ -87,9 +84,9 @@ charformer-pytorch--charformer-pytorch-0.0.4
 python 3.6
 ```
 
-#### Get wiki surfacename
+### 5) How to get the  surfacename of wiki relation 
 
-go to the web [wiki query](https://query.wikidata.org/)
+#### Go to the web [wiki query](https://query.wikidata.org/)
 input:
 ```
 SELECT ?property ?propertyLabel ?propertyDescription (GROUP_CONCAT(DISTINCT(?altLabel); separator = ", ") AS ?altLabel_list) WHERE {
@@ -101,7 +98,7 @@ GROUP BY ?property ?propertyLabel ?propertyDescription
 LIMIT 5000
 ```
 
-and then you will got a file query.json, use the following code to get the relation and its surfacename 
+####  you will got a file query.json, use the following code to get the relation and its surfacename 
 
 ```
 import json
@@ -129,7 +126,7 @@ print(i)
 
 ```
 
-#### sentence representation by word2vec and tf-idf
+### 6) Sentence Representation by Word2vec and TF-IDF
 
 
 ```
@@ -182,8 +179,6 @@ for i in range(len(weight)):
 
 
 np.save("WSP_vector.npy",R)
-
-
 ```
 
 
